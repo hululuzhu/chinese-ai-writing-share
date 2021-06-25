@@ -15,6 +15,14 @@
 ## 对联
 - 数据来源 https://github.com/wb14123/couplet-dataset
 
+## 训练
+- 推荐Google Colab Pro （16G的GPU一个月随便用才9.99！）
+- TPU的支持有空会跟上
+
+## 保存
+- 训练完的模型可以直接`model.save(path)`，但不知为何有问题，所以我存了H5参数
+- 另外用pickle保存vocab和模型的参数，用于重建模型，可以参考inference notebook
+
 ## 例子
 - 写诗 （80 epochs）
 
