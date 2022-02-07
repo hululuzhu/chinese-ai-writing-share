@@ -6,8 +6,11 @@
 - 数据质量直接影响模型效果，如模型有异常输出（如黄赌毒爆等内容），请大家自动忽略，不要报警
 
 ## 架构
-- 基于Transformer的encoder-decoder
-- transformer使用keras-transformer lib
+- 2021方案，自己训练
+    - 基于Transformer的encoder-decoder
+    - transformer使用keras-transformer lib
+- 2022准备中
+    - 准备基于pretrained mengzi T5来finetuning
 
 ## 写诗
 - 数据来源 https://github.com/chinese-poetry/chinese-poetry
@@ -22,6 +25,7 @@
 ## 保存
 - 训练完的模型可以直接`model.save(path)`，但不知为何有问题，所以我存了H5参数
 - 另外用pickle保存vocab和模型的参数，用于重建模型，可以参考inference notebook
+- TBD T5 模型相关
 
 ## 例子
 - 写诗 （80 epochs）
