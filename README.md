@@ -1,28 +1,61 @@
 # chinese-ai-writing-share
 中文AI写作分享
 
+个人非常满意的个别案例
+```
+#### Mengzi T5 Finetune ####
+上： 五科五状元，金木水火土
+下： 三才三进士，诗书礼乐诗
+上： 望江楼，望江流，望江楼上望江流，江楼千古，江流千古
+下： 听雨阁，听雨落，听雨阁中听雨落，雨阁万重，雨落万重
+
+标题： 作诗：秋思 模仿：李清照
+诗歌： 秋思不可奈，况复在天涯。客路逢寒食，家书报早炊。风霜侵鬓发，天地入诗脾。欲寄南飞雁，归期未有期。
+标题： 作诗：百花 模仿：苏轼
+诗歌： 百花开尽绿阴成，谁道春风不世情。若使此花无俗韵，世间那得有芳名。
+
+
+#### transformer supervised learning ####
+上: 不待鸣钟已汗颜，重来试手竟何艰
+下: 只缘沧海常风雨，再去翻身只等闲
+上: 相思俱付三更月
+下: 寂寞难留一夜风
+标题: 湾区春日之谜
+正文: 春风吹雨不成秋，春色如何一日休。不是春光无处着，只应春色是人愁。
+```
+
 ## 声明
-- 基于主流transformer的业余水平语言模型实现，但因为几小时见效，故适合自娱自乐
-- 数据质量直接影响模型效果，如模型有异常输出，请大家见谅
-- Demo关闭sampling，最佳效果一般在打开sampling后多次尝试能达到
+- 基于主流transformer的业余水平语言模型实现，几小时见效，适合自娱自乐
+- 数据质量直接影响模型效果，模型也因为个人计算资源有限没有压榨性能极限，如模型有异常或低质量输出，请大家见谅
+- 2021 transformer Demo关闭sampling
+- 2022 T5 Demo 使用默认设置 `num_beams=2, top_k=50, top_p=0.95, do_sample=True,`
 
 ## 架构
-- 2021方案，自己训练
+- 2021监督学习方案，自己从头训练
     - 基于Transformer的encoder-decoder
     - transformer使用keras-transformer lib
-- 2022准备中
-    - pretrained [mengzi T5](https://huggingface.co/Langboat/mengzi-t5-base) 来 finetuning
+- 2022迁移学习方案，使用T5 finetune
+    - 预训练使用 [澜舟科技的孟子 T5](https://huggingface.co/Langboat/mengzi-t5-base)
+    - 理论上可以把诗歌和对联两个合起来作为multi-task下游任务，但是对联有很多是现代白话文，古文我只用了唐诗宋词，所以最后还是分开
+    - 我只训练了3-4个epoch，看loss的下降速度应该还有很大提升空间
 
 ## 数据来源
 - 唐诗宋词 https://github.com/chinese-poetry/chinese-poetry
   - 2021 transformer 只训练 `标题 -> 诗歌`
   - 2022 T5 方案考虑了 `标题 -> 诗歌`，或者 `标题+诗人 -> 诗歌`
+  - 标题长度限制12token，诗人4token，诗歌64token，结尾用句号，具体参考training下面的notebook
 - 对联 https://github.com/wb14123/couplet-dataset
+  - 标准输入输出，T5使用`对联：`前缀，长度限制32字符
+
+## 语言支持
+- 默认简体中文
+- 2022 T5 inference 支持繁体中文，需要标记 `is_input_traditional_chinese=True`
+- 如需要训练繁体中文模型，查找`chinese_converter.to_simplified`改为`chinese_converter.to_traditional`
 
 ## 训练
-- 推荐Google Colab Pro （16G的GPU一个月随便用才9.99！）
-- transformer方案使用TPU，模型训练时间~10小时
-- T5因为使用simplet5，顾使用GPU，模型训练时间~6-8小时
+- 我是用 Google Colab Pro（推荐，16G的GPU一个月随便用才9.99！）
+- transformer方案使用TF2 keras，用TPU训练，模型训练时间~10小时
+- T5因为使用simplet5 (pytorch + huggingface 的一个封装)，所以使用GPU训练，模型训练时间~6-8小时
 
 ## 模型下载和使用
 - 推荐参考inference下面的notebook来参考使用，模型下载地址也在notebook介绍
@@ -31,8 +64,8 @@
   - 2021 Transformer 写诗 ~10M
   - 2022 T5 ~250M
 
-## 例子
-- 写诗 transformer （80 epochs）
+## 更多例子，也可以参考inference下面的notebook
+- 写诗 2021 transformer 方案示例 （80 epochs）
 
 ```
 标题: 秋思
@@ -43,7 +76,7 @@
 正文: 春风吹雨不成秋，春色如何一日休。不是春光无处着，只应春色是人愁。
 ```
 
-- 写诗 T5 （4 epochs）
+- 写诗 2022 T5 finetune 方案示例（4 epochs）
 
 ```
 标题： 作诗：秋思
@@ -68,17 +101,6 @@
 标题： 作诗：百花 模仿：苏轼
 诗歌： 百花开尽绿阴成，谁道春风不世情。若使此花无俗韵，世间那得有芳名。
 
-标题： 作诗：佳人有约
-诗歌： 佳人约我共登台，笑指花前酒半杯。莫道春光无分到，且看红日上楼来。
-标题： 作诗：佳人有约 模仿：杜甫
-诗歌： 佳人有约到江干，共约寻春入肺肝。红杏绿桃相映发，白苹红蓼不胜寒。花前醉舞春风裏，月下狂歌夜漏残。莫怪相逢不相识，只应清夢在长安。
-标题： 作诗：佳人有约 模仿：李白
-诗歌： 佳人有约在瑶台，花落花开不待开。莫道春风无分到，且看明月照楼台。
-标题： 作诗：佳人有约 模仿：李清照
-诗歌： 佳人约我共登台，花下相携醉不回。莫道春归无觅处，桃花依旧笑人来。
-标题： 作诗：佳人有约 模仿：苏轼
-诗歌： 佳人约我共清欢，笑指花前醉玉盘。莫道春归无觅处，且看红日上栏干。
-
 標題： 作诗：春节
 詩歌： 去年今日到江干，家在青山綠水間。老去心情渾似舊，春來情緒只如閒。
 標題： 作诗：春节 模仿：杜甫
@@ -102,7 +124,7 @@
 詩歌： 月從海上生，照我庭下影。不知此何夕，但見天宇靜。
 ```
 
-- 对联 transformer（60 epochs）
+- 对联 2021 transformer 方案示例 （60 epochs）
 
 ```
 上: 欢天喜地度佳节
@@ -113,7 +135,7 @@
 下: 寂寞难留一夜风
 ```
 
-- 对联 T5（3 epochs）
+- 对联 2022 T5 finetune 方案示例（3 epochs）
 ```
 上： 欢天喜地度佳节
 下： 笑语欢歌迎新春
