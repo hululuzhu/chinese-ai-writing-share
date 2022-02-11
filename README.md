@@ -61,6 +61,7 @@
 
 ## 模型下载和使用
 - 推荐参考inference下面的notebook来参考使用，模型下载地址也在notebook介绍
+  - **重要：模型文件存在Google Drive，推荐用Google账号打开，点击`Add to shortcut`，之后在你Drive的主页面`shared with me`看到目录后选择`add shortcut to Drive`，这样可以mount后本地可以操作文件**
 - 模型参数大小
   - 2021 Transformer 对联 ~80M
   - 2021 Transformer 写诗 ~10M
