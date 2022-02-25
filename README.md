@@ -29,8 +29,8 @@
 ## 声明
 - 基于主流transformer的业余水平语言模型实现，几小时见效，适合自娱自乐
 - 数据质量直接影响模型效果，模型也因为个人计算资源有限没有压榨性能极限，如模型有异常或低质量输出，请大家见谅
-- 2021 transformer Demo关闭sampling
-- 2022 T5 Demo 使用默认设置 `num_beams=2, top_k=50, top_p=0.95, do_sample=True,`
+- 2021 keras transformer Demo使用 `topk=1`
+- 2022 T5 诗歌使用默认设置 `num_beams=2, top_k=50, top_p=0.95`，对联使用`topk=1`
 
 ## 架构
 - 2021监督学习方案，自己从头训练
