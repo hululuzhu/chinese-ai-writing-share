@@ -32,6 +32,7 @@
 - 2021 keras transformer Demo使用 `topk=1`
   - 04/2022: 很遗憾因为2021版的对联vocab被错误覆盖，导致模型输出结果异常，找不到原来代码修复
 - 2022 T5 诗歌使用默认设置 `num_beams=2, top_k=50, top_p=0.95`，对联使用`topk=1`
+- 06/2022: 尝试在finetune的诗歌模型上“精读” [ericqianli](https://github.com/ericqianli/tianyahaige) 的600+诗歌，尝试个人风格模仿，质量待分析
 
 ## 架构
 - 2021监督学习方案，自己从头训练
