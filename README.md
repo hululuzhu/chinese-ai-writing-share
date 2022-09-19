@@ -1,7 +1,13 @@
 # chinese-ai-writing-share
 中文AI写作分享
 
-个人非常满意的个别案例
+## 09/2022更新：为方便写诗模型分享，已上传至 https://huggingface.co/hululuzhu/chinese-poem-t5-mengzi-finetune
+- 如果自己有GPU环境，可以参考我放在huggingface的[示例代码](https://huggingface.co/hululuzhu/chinese-poem-t5-mengzi-finetune#%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B)
+- 或者使用Google Colab，用这个[简化版colab](https://colab.research.google.com/github/hululuzhu/chinese-ai-writing-share/blob/main/inference/2022_simple_poem_inference_huggingface.ipynb)来玩我的T5写诗模型
+谢谢！
+
+
+## 个人非常满意的个别案例
 ```
 #### Mengzi T5 Finetune ####
 上： 不待鸣钟已汗颜，重来试手竟何艰
