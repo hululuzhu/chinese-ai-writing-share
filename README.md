@@ -1,9 +1,13 @@
 # chinese-ai-writing-share
 中文AI写作分享
 
-## 09/2022更新：为方便写诗模型分享，已上传至 https://huggingface.co/hululuzhu/chinese-poem-t5-mengzi-finetune
-- 如果自己有GPU环境，可以参考我放在huggingface的[示例代码](https://huggingface.co/hululuzhu/chinese-poem-t5-mengzi-finetune#%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B)
-- 或者使用Google Colab，用这个[简化版colab](https://colab.research.google.com/github/hululuzhu/chinese-ai-writing-share/blob/main/inference/2022_simple_poem_inference_huggingface.ipynb)来玩我的T5写诗模型
+## 为方便写诗模型分享，T5写诗和对联模型都已上传至 HuggingFace
+- 09/2022 写诗 AI：https://huggingface.co/hululuzhu/chinese-poem-t5-mengzi-finetune
+- 10/2022 对联 AI：https://huggingface.co/hululuzhu/chinese-couplet-t5-mengzi-finetune
+
+## 试玩
+- 如果自己有GPU环境，可以参考我放在huggingface的 [写诗示例代码](https://huggingface.co/hululuzhu/chinese-poem-t5-mengzi-finetune#%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B) 或者 [对联示例代码](https://huggingface.co/hululuzhu/chinese-couplet-t5-mengzi-finetune#%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B)
+- 或者使用Google Colab，用这个 [简化版写诗colab](https://colab.research.google.com/github/hululuzhu/chinese-ai-writing-share/blob/main/inference/2022_simple_poem_inference_huggingface.ipynb) 或者 [简化版对联colab](https://colab.research.google.com/github/hululuzhu/chinese-ai-writing-share/blob/main/inference/2022_simple_couplet_inference_huggingface.ipynb)
 谢谢！
 
 
