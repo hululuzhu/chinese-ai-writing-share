@@ -2,6 +2,8 @@
 中文AI写作分享
 
 ## 为方便写诗模型分享，T5写诗和对联模型都已上传至 HuggingFace
+- 02/2023 写诗 AI V2：https://huggingface.co/hululuzhu/chinese-poem-t5-v2
+  - 数据更少，效果更整洁，训练量更少，使用A100只要不要两小时
 - 09/2022 写诗 AI：https://huggingface.co/hululuzhu/chinese-poem-t5-mengzi-finetune
 - 10/2022 对联 AI：https://huggingface.co/hululuzhu/chinese-couplet-t5-mengzi-finetune
 
