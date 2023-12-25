@@ -1,6 +1,18 @@
 # chinese-ai-writing-share
 中文AI写作分享
 
+## 12/2023 LLM更新
+- 百川7B + LoRA代码走通，希望1月底有空炼完后发布LoRA和大家一起完
+  - A100 10分钟后的效果看起来有点意思
+  ```
+  标题： 作诗：冬雪 模仿：杜甫
+  诗歌： 严陵滩上白蘋风，江北江南雪正浓。
+  标题： 作诗：冬雪 模仿：苏轼
+  诗歌： 梅花已报春消息，红蕊繁枝满院香。
+  ```
+- 有资源的朋友可以看一下这个[notebook](https://github.com/hululuzhu/chinese-ai-writing-share/blob/main/training/2023_llm/2023_LLM_poem_ai_baichuan_finetune.ipynb)
+  - 注意调整`IS_TEST_FLOW = True`否则只有5%的数据用于微调
+
 ## 为方便写诗模型分享，T5写诗和对联模型都已上传至 HuggingFace
 - 02/2023 写诗 AI V2：https://huggingface.co/hululuzhu/chinese-poem-t5-v2
   - 数据更少，效果更整洁，训练量更少，使用A100只要不要两小时
