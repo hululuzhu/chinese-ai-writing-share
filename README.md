@@ -1,6 +1,41 @@
 # chinese-ai-writing-share
 中文AI写作分享
 
+## 02/2024 更新
+- 尝试了Google的Gemma 7B + LoRA，效果还可以
+- 代码参考[这里](https://github.com/hululuzhu/chinese-ai-writing-share/blob/main/further_finetune_example/gemma_lora_finetune.ipynb)（不知为何同样int8比llama2 7b要很多memory）
+- LoRA ckpt下载 https://huggingface.co/hululuzhu/chinese-couplet-gemma-lora-test-v0.1
+- Before Training
+  ```
+  Before training
+  上联：春风得意花铺路
+  下联：花香满鼻，春暖
+  
+  上联：美丽中国魅力北京
+  下联：中国传统建筑风格
+  
+  上联：鱼书千里梦
+  下联：笑口在笑。
+  
+  对联：日落晚霞临古寺
+  下联：花香满院，迎风
+   ```
+- After Training for 20mins using T4 GPU
+  ```
+  After finetune (undertrained, fater 20mins using T4 GPU)
+  上联：春风得意花铺路
+  下联：秋雨飘落叶落落
+  
+  上联：美丽中国魅力北京
+  下联：和谐世界和谐中国
+  
+  上联：鱼书千里梦
+  下联：鸟传万里风
+  
+  对联：日落晚霞临古寺
+  下联：风吹柳绿映新村
+  ```
+
 ## 12/2023 LLM更新
 - 百川7B + LoRA代码走通，希望1月底有空炼完后发布LoRA和大家一起完
   - A100 10分钟后的效果看起来有点意思
