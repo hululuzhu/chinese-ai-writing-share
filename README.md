@@ -1,39 +1,42 @@
 # chinese-ai-writing-share
 中文AI写作分享
 
-## 02/2024 更新
+## 03/2024 更新
+- Gemma-it的prompt需要特殊格式，注意这里的newline也是需要的，另外开头tokenizer会自动加`<bos>`，结尾我自己加上`<eos>`
+
+  ```
+  GEMMA_IT_FORMAT = """<start_of_turn>user
+  {user_question}<end_of_turn>
+  <start_of_turn>model
+  """
+  ```
+
 - 尝试了Google的Gemma 7B + LoRA，效果还可以
 - 代码参考[这里](https://github.com/hululuzhu/chinese-ai-writing-share/blob/main/further_finetune_example/gemma_lora_finetune.ipynb)（不知为何同样int8比llama2 7b要很多memory）
 - LoRA ckpt下载 https://huggingface.co/hululuzhu/chinese-couplet-gemma-lora-test-v0.1
 - Before Training
+
   ```
-  Before training
-  上联：春风得意花铺路
-  下联：花香满鼻，春暖
-  
-  上联：美丽中国魅力北京
-  下联：中国传统建筑风格
-  
-  上联：鱼书千里梦
-  下联：笑口在笑。
-  
-  对联：日落晚霞临古寺
-  下联：花香满院，迎风
+  春风得意花铺路
+  春风得意花铺路，春暖花开，美不胜
+  美丽中国魅力北京
+  **美丽中国魅力北京，令人惊叹的现代与传统
+  鱼书千里梦
+  鱼书千里梦，是一个关于爱慕和成长的小说
+  日落晚霞临古寺
+  夕暮暮色，日落缓缓西下，将天空渲染成 Varies
    ```
-- After Training for 20mins using T4 GPU
+
+- After Training for 10mins (significantly undertrained) using T4 GPU
   ```
-  After finetune (undertrained, fater 20mins using T4 GPU)
-  上联：春风得意花铺路
-  下联：秋雨飘落叶落落
-  
-  上联：美丽中国魅力北京
-  下联：和谐世界和谐中国
-  
-  上联：鱼书千里梦
-  下联：鸟传万里风
-  
-  对联：日落晚霞临古寺
-  下联：风吹柳绿映新村
+  春风得意花铺路
+  秋雨流派诗作韵<eos>
+  美丽中国魅力北京
+  和谐社会和谐社会<eos>
+  鱼书千里梦
+  鸟歌百载歌<eos>
+  日落晚霞临古寺
+  月明清风送客船<eos>
   ```
 
 ## 12/2023 LLM更新
