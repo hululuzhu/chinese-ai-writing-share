@@ -11,6 +11,14 @@
   """
   ```
 
+  - 发现有更方便的封装，只是藏的比较深 😡
+    ```
+    chat = [
+        { "role": "user", "content": "Write a hello world program" },
+    ]
+    prompt = tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=True)
+    ```
+
 - 尝试了Google的Gemma 7B + LoRA，效果还可以
 - 代码参考[这里](https://github.com/hululuzhu/chinese-ai-writing-share/blob/main/further_finetune_example/gemma_lora_finetune.ipynb)（不知为何同样int8比llama2 7b要很多memory）
 - LoRA ckpt下载 https://huggingface.co/hululuzhu/chinese-couplet-gemma-lora-test-v0.1
